@@ -507,9 +507,9 @@ Each of these was considered and deliberately left out — these are the boundar
 
 - **Apply this migration** to the Supabase project via the Supabase MCP (`apply_migration`) or `supabase db push` once the migration file exists at `supabase/migrations/20260528120000_init_schema.sql`.
 - **Disable "Confirm email"** in the Supabase Auth settings (PRD §5.9, §10).
-- **Set refresh-token lifetime to 7 days** in the Supabase Auth settings (Tech.md §6.3).
 - **Generate the auth-hook secret** in Supabase → Authentication → Hooks → Send Email, and put it in `.env.local` as `SUPABASE_AUTH_HOOK_SECRET`.
 - After this migration, **regenerate Supabase TypeScript types** so `Database` types in the SSR client are up-to-date.
+- **Session expiry is not configured at v1.** PRD §5.9's original "1-week sliding window" required Supabase Pro's "Inactivity timeout"; on the Free plan the setting is not available, so sessions persist until the user signs out (or changes password, or deletes account). Revisit on Pro upgrade — Tech.md §6.3.
 
 ---
 

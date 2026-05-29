@@ -195,7 +195,7 @@ All saved entries are **private to the authenticated user**. No sharing, no pair
 - **No email verification gate** at launch — users can use the app immediately after sign-up. *(Accepted risk — see §10.)*
 - **Password reset via email** is supported (Supabase magic-link flow → "set new password" page).
 - All app content (lookup, dictionary, settings) is **only accessible when authenticated**. Unauthenticated requests to any in-app route redirect to `/login`.
-- Sessions last **one week** as a sliding window — every authenticated request extends the session by another week of inactivity.
+- Sessions persist until the user signs out, changes their password, or deletes their account. *(A sliding-window inactivity expiry was considered and deferred — it requires Supabase Pro's "Inactivity timeout" feature, which is not available on the Free plan. Acceptable for v1 given the private, single-user nature of the app; revisit if/when we upgrade.)*
 
 #### Sign-up captures
 

@@ -184,6 +184,25 @@
   --shadow-2xl: 0px 4px 12px 0px hsl(0 0% 0% / 1.00);
 }
 
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-3px);
+  }
+  40%,
+  80% {
+    transform: translateX(3px);
+  }
+}
+
+@utility animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

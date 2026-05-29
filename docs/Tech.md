@@ -346,7 +346,7 @@ The client renders the message + a manual **Try again** button (PRD §8.4). No s
 
 - Sessions are **cookie-based**, managed by `@supabase/ssr`.
 - Supabase JWT default lifetime is 1 hour; the `@supabase/ssr` client transparently refreshes them using the refresh token.
-- Effective session length is **1 week of inactivity** (PRD §5.9), enforced by setting the refresh-token lifetime to 7 days in the Supabase Auth settings (`auth.config.jwt.refresh_token_rotation_enabled = true`, lifetime 7 days). Documented as part of project setup, not in code.
+- Sessions persist until the user signs out, changes their password, or deletes their account (PRD §5.9). No server-side inactivity timeout at v1 — Supabase's "Inactivity timeout" is a Pro-plan feature and we are on Free. Revisit if/when we upgrade.
 
 ### 6.4 Authorization model
 
